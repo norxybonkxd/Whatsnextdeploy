@@ -1,6 +1,5 @@
-# Welcome to your Lovable project
-
-## Project ino
+# Welcome to What's Next
+## Project info
 
 
 **Use your preferred IDE**
