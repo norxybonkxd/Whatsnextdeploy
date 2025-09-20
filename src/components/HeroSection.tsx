@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
+  DialogTitle,yo
 } from "@/components/ui/dialog";
 
 const HeroSection = () => {
@@ -85,7 +85,7 @@ const HeroSection = () => {
               <div className="aspect-video relative">
                 <iframe
                   className="w-full h-full rounded-lg"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                  src="https://www.youtube.com/embed/mRT4aqyUV5Q?autoplay=1"
                   title="Platform Overview"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
