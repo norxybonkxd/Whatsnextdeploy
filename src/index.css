@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Career Platform Design System */
+
+@layer base {
+  :root {
+    /* Professional Color Palette */
+    --background: 0 0% 100%;
+    --foreground: 222 15% 15%;
+
+    /* Card System */
+    --card: 0 0% 100%;
+    --card-foreground: 222 15% 15%;
+    --card-shadow: 222 15% 15% / 0.08;
+
+    /* Professional Primary - Corporate Blue */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 221 83% 65%;
+    --primary-dark: 221 83% 40%;
+
+    /* Secondary - Professional Teal */
+    --secondary: 180 77% 48%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 180 77% 60%;
+
+    /* Success & Status Colors */
+    --success: 134 61% 41%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Neutral Grays */
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 13% 96%;
+    --accent-foreground: 222 15% 15%;
+
+    /* Interactive Elements */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    /* Professional Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--secondary)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(var(--muted)));
+    --gradient-overlay: linear-gradient(135deg, hsl(var(--primary) / 0.95), hsl(var(--secondary) / 0.95));
+
+    /* Professional Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(var(--card-shadow));
+    --shadow-md: 0 4px 6px -1px hsl(var(--card-shadow));
+    --shadow-lg: 0 10px 15px -3px hsl(var(--card-shadow));
+    --shadow-xl: 0 20px 25px -5px hsl(var(--card-shadow));
+    --shadow-glow: 0 0 0 1px hsl(var(--primary) / 0.05), 0 1px 0 0 hsl(var(--primary) / 0.05), 0 1px 3px 0 hsl(var(--primary) / 0.1);
+
+    /* Animation Timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Professional Theme */
+    --background: 222 15% 9%;
+    --foreground: 0 0% 98%;
+    --card: 222 15% 11%;
+    --card-foreground: 0 0% 98%;
+    --card-shadow: 0 0% 0% / 0.2;
+
+    --primary: 221 83% 60%;
+    --primary-foreground: 222 15% 9%;
+    --primary-light: 221 83% 72%;
+    --primary-dark: 221 83% 45%;
+
+    --secondary: 180 77% 55%;
+    --secondary-foreground: 222 15% 9%;
+    --secondary-light: 180 77% 67%;
+
+    --muted: 222 15% 15%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 222 15% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --border: 222 15% 20%;
+    --input: 222 15% 15%;
+    --ring: 221 83% 60%;
+
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--secondary)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-overlay: linear-gradient(135deg, hsl(var(--primary) / 0.9), hsl(var(--secondary) / 0.9));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Professional Hero Section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .hero-overlay {
+    background: var(--gradient-overlay);
+  }
+
+  /* Professional Cards */
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .card-professional {
+    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-300;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-professional:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  .card-interactive {
+    @apply card-professional cursor-pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /* Professional Buttons */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground hover:bg-primary-dark px-8 py-4 rounded-lg font-semibold text-lg;
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-3 rounded-lg font-medium;
+    transition: var(--transition-smooth);
+  }
+
+  /* Interactive Elements */
+  .interactive-glow {
+    transition: var(--transition-smooth);
+  }
+
+  .interactive-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  /* Professional Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  .animate-fade-in-delay {
+    animation: fadeIn 0.8s ease-out 0.3s both;
+  }
+
+  /* Text Gradients */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Professional Layouts */
+  .section-padding {
+    @apply px-6 py-16 lg:px-8 lg:py-24;
+  }
+
+  .container-professional {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
