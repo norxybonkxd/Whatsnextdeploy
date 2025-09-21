@@ -28,36 +28,70 @@ const CareerMapping = () => {
     setShowResults(true);
   };
 
-  const careerPath = [
-    {
-      phase: "Foundation",
-      title: "Junior Data Analyst",
-      duration: "0-2 years",
-      skills: ["Excel", "SQL", "Python Basics", "Statistics"],
-      description: "Build core analytical skills and domain knowledge"
-    },
-    {
-      phase: "Growth", 
-      title: "Data Scientist",
-      duration: "2-4 years",
-      skills: ["Machine Learning", "Advanced Python", "R", "Visualization"],
-      description: "Develop advanced technical expertise and business acumen"
-    },
-    {
-      phase: "Leadership",
-      title: "Senior Data Scientist",
-      duration: "4-7 years", 
-      skills: ["Team Leadership", "Strategy", "Advanced ML", "Business Intelligence"],
-      description: "Lead projects and mentor junior team members"
-    },
-    {
-      phase: "Executive",
-      title: "Head of Data Science",
-      duration: "7+ years",
-      skills: ["Executive Leadership", "Cross-functional Collaboration", "Innovation"],
-      description: "Drive organizational data strategy and culture"
-    }
-  ];
+  const careerPaths = {
+    tech: [
+      {
+        phase: "Foundation",
+        title: "Junior Data Analyst",
+        duration: "0-2 years",
+        skills: ["Excel", "SQL", "Python Basics", "Statistics"],
+        description: "Build core analytical skills and domain knowledge"
+      },
+      {
+        phase: "Growth", 
+        title: "Data Scientist",
+        duration: "2-4 years",
+        skills: ["Machine Learning", "Advanced Python", "R", "Visualization"],
+        description: "Develop advanced technical expertise and business acumen"
+      },
+      {
+        phase: "Leadership",
+        title: "Senior Data Scientist",
+        duration: "4-7 years", 
+        skills: ["Team Leadership", "Strategy", "Advanced ML", "Business Intelligence"],
+        description: "Lead projects and mentor junior team members"
+      },
+      {
+        phase: "Executive",
+        title: "Head of Data Science",
+        duration: "7+ years",
+        skills: ["Executive Leadership", "Cross-functional Collaboration", "Innovation"],
+        description: "Drive organizational data strategy and culture"
+      }
+    ],
+    creative: [
+      {
+        phase: "Foundation",
+        title: "Content Creator",
+        duration: "0-2 years",
+        skills: ["Photography Basics", "Video Editing", "Social Media", "Storytelling"],
+        description: "Build portfolio through personal projects and freelance work"
+      },
+      {
+        phase: "Growth",
+        title: "Professional Photographer/Filmmaker",
+        duration: "2-4 years",
+        skills: ["Advanced Editing", "Lighting", "Client Management", "Brand Building"],
+        description: "Establish your brand and expand client base"
+      },
+      {
+        phase: "Leadership",
+        title: "Creative Director",
+        duration: "4-7 years",
+        skills: ["Team Management", "Project Planning", "Creative Vision", "Client Relations"],
+        description: "Lead creative projects and mentor junior creators"
+      },
+      {
+        phase: "Executive",
+        title: "Studio Owner/Production House",
+        duration: "7+ years",
+        skills: ["Business Management", "Industry Networking", "Brand Partnerships"],
+        description: "Run your own creative business and shape industry trends"
+      }
+    ]
+  };
+
+  const [selectedPath, setSelectedPath] = useState('tech');
 
   return (
     <div className="min-h-screen bg-background">
@@ -141,26 +175,43 @@ const CareerMapping = () => {
               </Button>
             </form>
 
-            {/* Sample Data Helper */}
+              {/* Sample Data Helper */}
             <div className="mt-6 p-4 bg-muted/50 rounded-lg">
               <p className="text-sm text-muted-foreground mb-3 font-medium">
                 Try these sample inputs:
               </p>
-              <button
-                type="button"
-                onClick={() => setFormData({
-                  education: "Computer Science Degree",
-                  interests: "Data Analysis, Machine Learning, Problem Solving",
-                  goals: "Lead data science teams, Work at top tech companies"
-                })}
-                className="text-sm text-primary hover:text-primary-dark underline"
-              >
-                Use Sample Data Scientist Profile →
-              </button>
+              <div className="space-y-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData({
+                      education: "Computer Science Degree",
+                      interests: "Data Analysis, Machine Learning, Problem Solving",
+                      goals: "Lead data science teams, Work at top tech companies"
+                    });
+                    setSelectedPath('tech');
+                  }}
+                  className="text-sm text-primary hover:text-primary-dark underline block"
+                >
+                  Use Sample Data Scientist Profile →
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData({
+                      education: "10th Grade Dropout, Self-Taught",
+                      interests: "Photography, Filmmaking, Visual Storytelling",
+                      goals: "Build a creative studio, Create impactful visual content"
+                    });
+                    setSelectedPath('creative');
+                  }}
+                  className="text-sm text-primary hover:text-primary-dark underline block"
+                >
+                  Use Sample Creative Profile →
+                </button>
+              </div>
             </div>
-          </Card>
-
-          {/* Results */}
+          </Card>          {/* Results */}
           <div className="space-y-6">
             {showResults ? (
               <>
@@ -171,10 +222,10 @@ const CareerMapping = () => {
                   </div>
                   
                   <div className="space-y-6">
-                    {careerPath.map((stage, index) => (
+                    {careerPaths[selectedPath].map((stage, index) => (
                       <div key={index} className="relative">
                         {/* Connection Line */}
-                        {index < careerPath.length - 1 && (
+                        {index < careerPaths[selectedPath].length - 1 && (
                           <div className="absolute left-6 top-12 w-0.5 h-16 bg-primary/30" />
                         )}
                         
